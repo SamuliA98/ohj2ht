@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ComboBoxChooser?>
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import fi.jyu.mit.fxgui.StringGrid?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxRekisteri.KauppaGUIController">
+   <bottom>
+      <HBox spacing="10.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleLisaaAuto" text="LisÃ¤Ã¤ kohde" />
+            <Button mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna" />
+            <Button alignment="CENTER_RIGHT" maxWidth="1000.0" mnemonicParsing="false" onAction="#handleUusiHuolto" text="LisÃ¤Ã¤ huolto">
+               <HBox.margin>
+                  <Insets left="205.0" />
+               </HBox.margin>
+            </Button>
+            <Button alignment="BOTTOM_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleMuokkaaHuolto" text="Muokkaa huoltoa" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <GridPane prefHeight="100.0" prefWidth="191.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ComboBoxChooser fx:id="cbKentat" onAction="#handleHakuehto" prefHeight="25.0" prefWidth="171.0" rivit="Merkki&#10;Malli&#10;Rekisterinumero&#10;Polttoaine&#10;Vaihteisto&#10;Vuosimalli" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </ComboBoxChooser>
+                  <TextField fx:id="hakuehto" onAction="#handleHakuehto" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="Haku">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </GridPane>
+         </left>
+         <right>
+            <GridPane minHeight="100.0" prefWidth="363.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Tulokset" />
+                  <ScrollPane fitToWidth="true" prefHeight="300.0" GridPane.rowIndex="1">
+                     <content>
+                        <ListChooser fx:id="chooserAutot" rivit="Volkswagen Amarok&#10;Volkswagen Golf&#10;Volkswagen Passat&#10;Volkswagen Phaeton&#10;Volkswagen Tiguan" />
+                     </content>
+                  </ScrollPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </GridPane>
+         </right>
+         <bottom>
+            <BorderPane BorderPane.alignment="CENTER">
+               <center>
+                  <SplitPane dividerPositions="0.5" BorderPane.alignment="CENTER">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <ScrollPane fx:id="panelAuto" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                       <content>
+                                          <GridPane fx:id="gridAuto" hgap="10.0" prefWidth="266.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                                                <ColumnConstraints hgrow="ALWAYS" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="Merkki&amp;Malli" GridPane.rowIndex="1" />
+                                                <Label text="Rekisterinumero" GridPane.rowIndex="2" />
+                                                <Label text="Vuosimalli" GridPane.rowIndex="3" />
+                                                <Label text="Mittari" GridPane.rowIndex="4" />
+                                                <Label text="Polttoaine" GridPane.rowIndex="5" />
+                                                <Label text="Vaihteisto" GridPane.rowIndex="6" />
+                                                <Label text="Iskutilavuus" GridPane.rowIndex="7" />
+                                                <Label text="Hinta" GridPane.rowIndex="8" />
+                                                <TextField text="Volkswagen Golf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField text="XHJ-193" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField text="2009" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField text="212 000 km" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <TextField text="Bensiini" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <TextField text="Manuaali" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <TextField text="1.4" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <TextField text="6 500 â‚¬" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Label text="Tiedot" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </center>
+                                 <bottom>
+                                    <Label fx:id="labelVirhe" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <BorderPane>
+                                 <top>
+                                    <Label text="Huollot" BorderPane.alignment="CENTER_LEFT">
+                                       <BorderPane.margin>
+                                          <Insets left="10.0" right="10.0" top="10.0" />
+                                       </BorderPane.margin>
+                                    </Label>
+                                 </top>
+                                 <center>
+                                    <StringGrid fx:id="tableHuollot" prefHeight="240.0" rivit="Huollon nimi | PÃ¤ivÃ¤mÃ¤Ã¤rÃ¤ | Kesto&#10;Ã–ljynvaihto | &#10;Katsastus | &#10;Talvirenkaiden vaihto | " BorderPane.alignment="CENTER">
+                                       <BorderPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </BorderPane.margin>
+                                    </StringGrid>
+                                 </center>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </center>
+            </BorderPane>
+         </bottom>
+      </BorderPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Tiedosto">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleAvaa" text="Avaa..." />
+                  <MenuItem mnemonicParsing="false" onAction="#handleTulosta" text="Tulosta..." />
+                  <MenuItem mnemonicParsing="false" onAction="#handleLopeta" text="Lopeta" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Muokkaa">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleLisaaAuto" text="LisÃ¤Ã¤ uusi ajoneuvo" />
+                  <MenuItem mnemonicParsing="false" onAction="#handlePoistaAuto" text="Poista ajoneuvo..." />
+                  <MenuItem mnemonicParsing="false" onAction="#handleUusiHuolto" text="LisÃ¤Ã¤ uusi huolto" />
+                  <MenuItem mnemonicParsing="false" onAction="#handlepoistaHuolto" text="Poista huolto..." />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Apua">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleApua" text="Apua" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleTietoja" text="Tietoja..." />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
